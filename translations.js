@@ -23,7 +23,7 @@ const translations = {
             description: "Sono una ragazza appassionata di tecnologia e sviluppo software. Ho iniziato a programmare quando avevo 12 anni e non mi sono più fermata. Credo che il codice sia un potente strumento per cambiare il mondo. :)",
             timeline: {
                 "2016": "Inizio del mio viaggio nella programmazione",
-                "2024": "Software Developer con 8 anni di esperienza"
+                "2025": "Software Developer con 9 anni di esperienza"
             }
         },
         // Contact Section
@@ -67,7 +67,7 @@ const translations = {
             description: "I'm a girl passionate about technology and software development. I started programming when I was 12 years old and I never stopped. I believe that code is a powerful tool to change the world. :)",
             timeline: {
                 "2016": "Beginning of my programming journey",
-                "2024": "Software Developer with 8 years of experience"
+                "2025": "Software Developer with 9 years of experience"
             }
         },
         contact: {
@@ -108,7 +108,7 @@ const translations = {
             description: "Я девушка, увлеченная технологиями и разработкой программного обеспечения. Я начала программировать в 12 лет и не останавливаюсь. Я верю, что код - это мощный инструмент для изменения мира. :)",
             timeline: {
                 "2016": "Начало моего пути в программировании",
-                "2024": "Разработчик ПО с 8-летним опытом"
+                "2025": "Разработчик ПО с 9-летним опытом"
             }
         },
         contact: {
@@ -149,7 +149,7 @@ const translations = {
             description: "Jestem dziewczyną pasjonującą się technologią i rozwojem oprogramowania. Zaczęłam programować w wieku 12 lat i nie przestałam. Wierzę, że kod to potężne narzędzie do zmiany świata. :)",
             timeline: {
                 "2016": "Początek mojej podróży w programowaniu",
-                "2024": "Programistka z 8-letnim doświadczeniem"
+                "2025": "Programistka z 9-letnim doświadczeniem"
             }
         },
         contact: {
@@ -190,7 +190,7 @@ const translations = {
             description: "Soy una chica apasionada por la tecnología y el desarrollo de software. Empecé a programar cuando tenía 12 años y no me he detenido. Creo que el código es una herramienta poderosa para cambiar el mundo. :)",
             timeline: {
                 "2016": "Inicio de mi viaje en la programación",
-                "2024": "Desarrolladora de Software con 8 años de experiencia"
+                "2025": "Desarrolladora de Software con 9 años de experiencia"
             }
         },
         contact: {
@@ -231,7 +231,7 @@ const translations = {
             description: "Je suis une fille passionnée par la technologie et le développement de logiciels. J'ai commencé à programmer à l'âge de 12 ans et je ne me suis jamais arrêtée. Je crois que le code est un outil puissant pour changer le monde. :)",
             timeline: {
                 "2016": "Début de mon voyage dans la programmation",
-                "2024": "Développeuse de logiciels avec 8 ans d'expérience"
+                "2025": "Développeuse de logiciels avec 9 ans d'expérience"
             }
         },
         contact: {
@@ -272,7 +272,7 @@ const translations = {
             description: "Ich bin ein Mädchen, das sich für Technologie und Softwareentwicklung begeistert. Ich habe mit 12 Jahren angefangen zu programmieren und nie aufgehört. Ich glaube, dass Code ein mächtiges Werkzeug ist, um die Welt zu verändern. :)",
             timeline: {
                 "2016": "Beginn meiner Reise in der Programmierung",
-                "2024": "Softwareentwicklerin mit 8 Jahren Erfahrung"
+                "2025": "Softwareentwicklerin mit 9 Jahren Erfahrung"
             }
         },
         contact: {
