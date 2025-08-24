@@ -26,8 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const sectionId = this.getAttribute('data-section');
             setActiveSection(sectionId);
+            // Chiudi menu mobile e resetta hamburger
             if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
+            }
+            if (navToggle.classList.contains('active')) {
+                navToggle.classList.remove('active');
             }
         });
     });
@@ -36,9 +40,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navToggle) {
         navToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
-            this.classList.toggle('active');
+            navToggle.classList.toggle('active');
         });
     }
+
+    // Chiudi menu mobile quando si clicca una voce
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                if (navToggle.classList.contains('active')) {
+                    navToggle.classList.remove('active');
+                }
+            }
+        });
+    });
     
     // Keyboard navigation
     document.addEventListener('keydown', function(e) {
@@ -172,51 +188,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Dark/light theme toggle
+    const themeToggle = document.getElementById('themeToggleBtn');
     function toggleTheme() {
         document.body.classList.toggle('dark-theme');
         localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
-        const themeToggle = document.querySelector('.theme-toggle');
         if (themeToggle) {
             themeToggle.innerHTML = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
         }
     }
-    
     // Load saved theme
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-theme');
     }
-    
-    // Create theme toggle button only if not present
-    if (!document.querySelector('.theme-toggle')) {
-        const themeToggle = document.createElement('button');
+    if (themeToggle) {
         themeToggle.innerHTML = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
-        themeToggle.className = 'theme-toggle';
-        themeToggle.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            background: var(--bg-card);
-            color: var(--text-primary);
-            cursor: pointer;
-            z-index: 1001;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        `;
         themeToggle.addEventListener('click', function() {
-            console.log('Theme button clicked!');
             toggleTheme();
         });
-        document.body.appendChild(themeToggle);
-        console.log('Theme button created and added to DOM');
         themeToggle.addEventListener('mouseenter', function() {
             this.style.transform = 'scale(1.1)';
         });
