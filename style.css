@@ -20,8 +20,18 @@
 }
 
 /* Dark Theme */
+[data-theme="dark"] {
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --bg-card: #1f2937;
+    --border-color: #374151;
+}
+
+/* System preference fallback */
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme]) {
         --text-primary: #f9fafb;
         --text-secondary: #d1d5db;
         --bg-primary: #111827;
@@ -64,8 +74,12 @@ body {
     transition: var(--transition);
 }
 
+[data-theme="dark"] .header {
+    background: rgba(17, 24, 39, 0.8);
+}
+
 @media (prefers-color-scheme: dark) {
-    .header {
+    :root:not([data-theme]) .header {
         background: rgba(17, 24, 39, 0.8);
     }
 }

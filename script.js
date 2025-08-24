@@ -193,11 +193,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
         if (theme === 'dark') {
-            themeIcon.textContent = '🌙';
-        } else {
             themeIcon.textContent = '☀️';
+        } else {
+            themeIcon.textContent = '🌙';
         }
+    }
+
+    function getInitialTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme;
+        }
+        // Check system preference if no saved theme
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
     }
 
     themeToggleBtn.addEventListener('click', () => {
@@ -207,12 +220,12 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             themeToggleBtn.classList.remove('rotating');
         }, 500);
-        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         setTheme(currentTheme === 'dark' ? 'light' : 'dark');
     });
 
     // Set initial theme
-    setTheme('light');
+    setTheme(getInitialTheme());
     
     // Scroll animations
     const observerOptions = {

@@ -46,6 +46,9 @@ const translations = {
             es: "Español",
             fr: "Français",
             de: "Deutsch"
+        },
+        theme: {
+            toggle: "Cambia tema"
         }
     },
     
@@ -95,6 +98,9 @@ const translations = {
             es: "Español",
             fr: "Français",
             de: "Deutsch"
+        },
+        theme: {
+            toggle: "Toggle theme"
         }
     },
     
@@ -144,6 +150,9 @@ const translations = {
             es: "Español",
             fr: "Français",
             de: "Deutsch"
+        },
+        theme: {
+            toggle: "Переключить тему"
         }
     },
     
@@ -193,6 +202,9 @@ const translations = {
             es: "Español",
             fr: "Français",
             de: "Deutsch"
+        },
+        theme: {
+            toggle: "Przełącz motyw"
         }
     },
     
@@ -242,6 +254,9 @@ const translations = {
             es: "Español",
             fr: "Français",
             de: "Deutsch"
+        },
+        theme: {
+            toggle: "Cambiar tema"
         }
     },
     
@@ -291,6 +306,9 @@ const translations = {
             es: "Español",
             fr: "Français",
             de: "Deutsch"
+        },
+        theme: {
+            toggle: "Changer de thème"
         }
     },
     
@@ -340,6 +358,9 @@ const translations = {
             es: "Español",
             fr: "Français",
             de: "Deutsch"
+        },
+        theme: {
+            toggle: "Theme wechseln"
         }
     }
 };
@@ -353,6 +374,7 @@ function getCurrentLanguage() {
 function updatePageLanguage(lang) {
     console.log('Updating language to:', lang);
 
+    // Update text content
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(element => {
         const key = element.getAttribute('data-i18n');
@@ -360,6 +382,28 @@ function updatePageLanguage(lang) {
         if (translation && translation !== key) {
             element.textContent = translation;
             console.log(`Updated ${key}: ${translation}`);
+        }
+    });
+
+    // Update title attributes
+    const titleElements = document.querySelectorAll('[data-i18n-title]');
+    titleElements.forEach(element => {
+        const key = element.getAttribute('data-i18n-title');
+        const translation = t(key, lang);
+        if (translation && translation !== key) {
+            element.title = translation;
+            console.log(`Updated title ${key}: ${translation}`);
+        }
+    });
+
+    // Update aria-label attributes
+    const ariaElements = document.querySelectorAll('[data-i18n-aria-label]');
+    ariaElements.forEach(element => {
+        const key = element.getAttribute('data-i18n-aria-label');
+        const translation = t(key, lang);
+        if (translation && translation !== key) {
+            element.setAttribute('aria-label', translation);
+            console.log(`Updated aria-label ${key}: ${translation}`);
         }
     });
 
