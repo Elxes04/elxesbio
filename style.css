@@ -19,7 +19,7 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark mode */
+/* Dark Theme */
 @media (prefers-color-scheme: dark) {
     :root {
         --text-primary: #f9fafb;
@@ -141,7 +141,7 @@ body {
     position: relative;
 }
 
-/* Animazione hamburger -> X */
+/* Hamburger to X animation */
 .nav-toggle.active span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -252,6 +252,17 @@ body {
 .theme-toggle:hover {
     transform: scale(1.1) !important;
     box-shadow: var(--shadow-lg) !important;
+}
+
+.theme-toggle #themeIcon {
+    transition: color 0.3s;
+}
+.theme-toggle.rotating #themeIcon {
+    animation: rotateThemeIcon 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes rotateThemeIcon {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
 }
 
 /* Main Content */

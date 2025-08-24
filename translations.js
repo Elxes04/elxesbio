@@ -1,13 +1,11 @@
 // Multi-language translation system
 const translations = {
     it: {
-        // Navigation
         nav: {
             home: "Home",
             about: "Chi Sono",
             contact: "Contatti"
         },
-        // Home Section
         home: {
             greeting: "Ciao, sono Elxes",
             subtitle: "Software Developer • 20 anni • Italia",
@@ -15,9 +13,16 @@ const translations = {
             skills: {
                 languages: "Linguaggi",
                 specializations: "Specializzazioni"
+            },
+            specializationsList: {
+                web: "Sviluppo Web",
+                desktop: "Desktop",
+                mobile: "Mobile",
+                backend: "Backend",
+                frontend: "Frontend",
+                api: "API"
             }
         },
-        // About Section
         about: {
             title: "Chi Sono",
             description: "Sono una ragazza appassionata di tecnologia e sviluppo software. Ho iniziato a programmare quando avevo 12 anni e non mi sono più fermata. Credo che il codice sia un potente strumento per cambiare il mondo. :)",
@@ -26,16 +31,13 @@ const translations = {
                 "2025": "Software Developer con 9 anni di esperienza"
             }
         },
-        // Contact Section
         contact: {
             title: "Contatti",
             intro: "Se vuoi metterti in contatto con me, puoi trovarmi qui:"
         },
-        // Footer
         footer: {
             copyright: "Creato con ❤️ e JavaScript."
         },
-        // Available languages
         languages: {
             it: "Italiano",
             en: "English",
@@ -60,6 +62,14 @@ const translations = {
             skills: {
                 languages: "Languages",
                 specializations: "Specializations"
+            },
+            specializationsList: {
+                web: "Web Development",
+                desktop: "Desktop",
+                mobile: "Mobile",
+                backend: "Backend",
+                frontend: "Frontend",
+                api: "API"
             }
         },
         about: {
@@ -101,6 +111,14 @@ const translations = {
             skills: {
                 languages: "Языки программирования",
                 specializations: "Специализации"
+            },
+            specializationsList: {
+                web: "Веб-разработка",
+                desktop: "Десктоп",
+                mobile: "Мобильная",
+                backend: "Бэкенд",
+                frontend: "Фронтенд",
+                api: "API"
             }
         },
         about: {
@@ -142,6 +160,14 @@ const translations = {
             skills: {
                 languages: "Języki programowania",
                 specializations: "Specjalizacje"
+            },
+            specializationsList: {
+                web: "Tworzenie stron WWW",
+                desktop: "Desktop",
+                mobile: "Mobilne",
+                backend: "Backend",
+                frontend: "Frontend",
+                api: "API"
             }
         },
         about: {
@@ -183,6 +209,14 @@ const translations = {
             skills: {
                 languages: "Lenguajes",
                 specializations: "Especializaciones"
+            },
+            specializationsList: {
+                web: "Desarrollo Web",
+                desktop: "Escritorio",
+                mobile: "Móvil",
+                backend: "Backend",
+                frontend: "Frontend",
+                api: "API"
             }
         },
         about: {
@@ -224,6 +258,14 @@ const translations = {
             skills: {
                 languages: "Langages",
                 specializations: "Spécialisations"
+            },
+            specializationsList: {
+                web: "Développement Web",
+                desktop: "Desktop",
+                mobile: "Mobile",
+                backend: "Backend",
+                frontend: "Frontend",
+                api: "API"
             }
         },
         about: {
@@ -265,6 +307,14 @@ const translations = {
             skills: {
                 languages: "Programmiersprachen",
                 specializations: "Spezialisierungen"
+            },
+            specializationsList: {
+                web: "Webentwicklung",
+                desktop: "Desktop",
+                mobile: "Mobile",
+                backend: "Backend",
+                frontend: "Frontend",
+                api: "API"
             }
         },
         about: {
@@ -294,31 +344,27 @@ const translations = {
     }
 };
 
-// Function to get the current language
+// Get current language
 function getCurrentLanguage() {
     return localStorage.getItem('language') || 'it';
 }
 
-// Function to update the page language
+// Update page language
 function updatePageLanguage(lang) {
     console.log('Updating language to:', lang);
 
-    // Update all elements with data-i18n
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(element => {
         const key = element.getAttribute('data-i18n');
         const translation = t(key, lang);
         if (translation && translation !== key) {
-            // Replace content directly (already cleaned externally)
             element.textContent = translation;
             console.log(`Updated ${key}: ${translation}`);
         }
     });
 
-    // Update document language attribute
     document.documentElement.lang = lang;
 
-    // Update page title
     const title = document.querySelector('title');
     if (title) {
         title.textContent = `Elxes - Software Developer (${t(`languages.${lang}`, lang)})`;
@@ -327,13 +373,12 @@ function updatePageLanguage(lang) {
     console.log('Language update completed');
 }
 
-// Function to set the language
+// Set language
 function setLanguage(lang) {
     if (translations[lang]) {
         localStorage.setItem('language', lang);
         updatePageLanguage(lang);
 
-        // Update language selector UI
         const languageBtn = document.getElementById('languageBtn');
         if (languageBtn && typeof t === 'function') {
             const currentLangText = t(`languages.${lang}`);
@@ -356,7 +401,7 @@ function setLanguage(lang) {
     }
 }
 
-// Function to get a translation
+// Get translation
 function t(key, lang = getCurrentLanguage()) {
     const keys = key.split('.');
     let value = translations[lang];

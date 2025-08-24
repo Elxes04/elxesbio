@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const sectionId = this.getAttribute('data-section');
             setActiveSection(sectionId);
-            // Chiudi menu mobile e resetta hamburger
+            // Close mobile menu and reset hamburger
             if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
             }
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Chiudi menu mobile quando si clicca una voce
+    // Close mobile menu when clicking a link
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             if (navMenu.classList.contains('active')) {
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialization
     handleInitialHash();
     
-    // Initialize ONLY language selector, NOT translations
+    // Initialize language selector
     setTimeout(() => {
         if (typeof t !== 'undefined' && typeof getCurrentLanguage !== 'undefined') {
             const currentLang = getCurrentLanguage();
@@ -188,31 +188,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Dark/light theme toggle
-    const themeToggle = document.getElementById('themeToggleBtn');
-    function toggleTheme() {
-        document.body.classList.toggle('dark-theme');
-        localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
-        if (themeToggle) {
-            themeToggle.innerHTML = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+            themeIcon.textContent = '🌙';
+        } else {
+            themeIcon.textContent = '☀️';
         }
     }
-    // Load saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-    }
-    if (themeToggle) {
-        themeToggle.innerHTML = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
-        themeToggle.addEventListener('click', function() {
-            toggleTheme();
-        });
-        themeToggle.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.1)';
-        });
-        themeToggle.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-        });
-    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        themeToggleBtn.classList.remove('rotating');
+        void themeToggleBtn.offsetWidth; // Force reflow
+        themeToggleBtn.classList.add('rotating');
+        setTimeout(() => {
+            themeToggleBtn.classList.remove('rotating');
+        }, 500);
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // Set initial theme
+    setTheme('light');
     
     // Scroll animations
     const observerOptions = {
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Background particle effect (optional)
+    // Background particle effect
     function createParticle() {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     setInterval(createParticle, 2000);
 
-    // Always apply the saved language on page load
+    // Apply saved language on page load
     const savedLang = localStorage.getItem('language') || 'it';
     setLanguage(savedLang);
 });
@@ -355,7 +355,7 @@ window.addEventListener('resize', debounce(function() {
     }
 }, 250));
 
-// Translation functions (updatePageLanguage is now in translations.js)
+// Translation functions
 function initializeTranslations() {
     if (typeof getCurrentLanguage === 'undefined' || typeof t === 'undefined' || typeof updatePageLanguage === 'undefined') {
         console.warn('Translation functions not available');
@@ -397,7 +397,7 @@ function addNewLanguage(langCode, translations) {
     }
 }
 
-// Modify setLanguage to emit a custom event
+// Set language and emit custom event
 function setLanguage(lang) {
     if (translations[lang]) {
         localStorage.setItem('language', lang);
@@ -406,23 +406,47 @@ function setLanguage(lang) {
     }
 }
 
-// Example of how to add a new language:
-/*
-addNewLanguage('pt', {
-    nav: {
-        home: "Início",
-        about: "Sobre",
-        contact: "Contato"
-    },
-    home: {
-        greeting: "Olá, sou Elxes",
-        subtitle: "Desenvolvedora de Software • 20 anos • Itália",
-        description: "Sou uma desenvolvedora de software apaixonada por tecnologia e desenvolvimento de software.",
-        skills: {
-            languages: "Linguagens",
-            specializations: "Especializações"
+// Translate specializations function
+function translateSpecializations() {
+    const currentLang = getCurrentLanguage();
+    console.log('Translating specializations for language:', currentLang);
+    
+    const specializationTags = document.querySelectorAll('.skill-category:nth-child(2) .skill-tag');
+    console.log('Found specialization tags:', specializationTags.length);
+    
+    specializationTags.forEach((tag, index) => {
+        const keys = ['web', 'desktop', 'mobile', 'backend', 'frontend', 'api'];
+        if (keys[index]) {
+            const translation = t(`home.specializationsList.${keys[index]}`, currentLang);
+            if (translation && translation !== `home.specializationsList.${keys[index]}`) {
+                tag.textContent = translation;
+                console.log(`Translated ${keys[index]}: ${translation}`);
+            }
         }
-    },
-    // ... other translations
+    });
+}
+
+// Initialize specializations translation
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        if (typeof getCurrentLanguage === 'function' && typeof t === 'function') {
+            translateSpecializations();
+        }
+    }, 1000);
+    
+    window.addEventListener('languageChanged', function() {
+        setTimeout(() => {
+            translateSpecializations();
+        }, 200);
+    });
 });
-*/
+
+// Ensure translations are applied on window load
+window.addEventListener('load', function() {
+    setTimeout(() => {
+        if (typeof getCurrentLanguage === 'function' && typeof t === 'function') {
+            translateSpecializations();
+        }
+    }, 500);
+});
+
