@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Bonjour, je suis Elxes",
+    "subtitle": "Développeuse de logiciels • 21 ans • Italie",
+    "description": "Je suis une développeuse passionnée par la technologie et le développement logiciel. J'ai commencé à programmer à l'âge de 12 ans et je n'ai jamais arrêté depuis.",
+    "skills": {
+      "languages": "Langages",
+      "specializations": "Spécialisations"
+    },
+    "specializationsList": {
+      "web": "Développement Web",
+      "desktop": "Bureau",
+      "mobile": "Mobile",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "api": "API"
+    }
+  },
+  "about": {
+    "title": "À propos",
+    "description": "Je suis une fille passionnée par la technologie et le développement logiciel. J'ai commencé à programmer à l'âge de 12 ans et je n'ai jamais arrêté depuis. Je crois que le code est un outil puissant pour changer le monde. :)",
+    "timeline": {
+      "2016": "Début de mon voyage dans la programmation",
+      "2025": "Développeuse de logiciels avec 9 ans d'expérience"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Si vous souhaitez me contacter, vous pouvez me trouver ici :"
+  },
+  "footer": {
+    "copyright": "Créé avec ❤️ et JavaScript."
+  },
+  "languages": {
+    "it": "Italiano",
+    "en": "English",
+    "ru": "Русский",
+    "pl": "Polski",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "theme": {
+    "toggle": "Changer le thème"
+  }
+}

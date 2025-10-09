@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hi, I'm Elxes",
+    "subtitle": "Software Developer • 21 years old • Italy",
+    "description": "I'm a software developer passionate about technology and software development. I started programming when I was 12 years old and haven't stopped since.",
+    "skills": {
+      "languages": "Languages",
+      "specializations": "Specializations"
+    },
+    "specializationsList": {
+      "web": "Web Development",
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "api": "API"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a girl passionate about technology and software development. I started programming when I was 12 years old and haven't stopped since. I believe code is a powerful tool to change the world. :)",
+    "timeline": {
+      "2016": "Started my programming journey",
+      "2025": "Software Developer with 9 years of experience"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "If you want to get in touch with me, you can find me here:"
+  },
+  "footer": {
+    "copyright": "Created with ❤️ and JavaScript."
+  },
+  "languages": {
+    "it": "Italian",
+    "en": "English",
+    "ru": "Russian",
+    "pl": "Polish",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German"
+  },
+  "theme": {
+    "toggle": "Toggle theme"
+  }
+}

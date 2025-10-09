@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Start",
+    "about": "Über mich",
+    "contact": "Kontakt"
+  },
+  "home": {
+    "greeting": "Hallo, ich bin Elxes",
+    "subtitle": "Softwareentwicklerin • 21 Jahre • Italien",
+    "description": "Ich bin eine Softwareentwicklerin mit Leidenschaft für Technologie und Entwicklung. Ich habe mit 12 Jahren angefangen zu programmieren und seitdem nicht mehr aufgehört.",
+    "skills": {
+      "languages": "Sprachen",
+      "specializations": "Spezialisierungen"
+    },
+    "specializationsList": {
+      "web": "Webentwicklung",
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "api": "API"
+    }
+  },
+  "about": {
+    "title": "Über mich",
+    "description": "Ich bin ein Mädchen mit Leidenschaft für Technologie und Softwareentwicklung. Ich habe mit 12 Jahren angefangen zu programmieren und seitdem nicht mehr aufgehört. Ich glaube, dass Code ein mächtiges Werkzeug ist, um die Welt zu verändern. :)",
+    "timeline": {
+      "2016": "Beginn meiner Programmierreise",
+      "2025": "Softwareentwicklerin mit 9 Jahren Erfahrung"
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "intro": "Wenn Sie mich kontaktieren möchten, können Sie mich hier finden:"
+  },
+  "footer": {
+    "copyright": "Erstellt mit ❤️ und JavaScript."
+  },
+  "languages": {
+    "it": "Italiano",
+    "en": "English",
+    "ru": "Русский",
+    "pl": "Polski",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "theme": {
+    "toggle": "Theme umschalten"
+  }
+}

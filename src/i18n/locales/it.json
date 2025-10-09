@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi Sono",
+    "contact": "Contatti"
+  },
+  "home": {
+    "greeting": "Ciao, sono Elxes",
+    "subtitle": "Software Developer • 21 anni • Italia",
+    "description": "Sono una software developer appassionata di tecnologia e sviluppo software. Ho iniziato a programmare quando avevo 12 anni e non mi sono più fermata.",
+    "skills": {
+      "languages": "Linguaggi",
+      "specializations": "Specializzazioni"
+    },
+    "specializationsList": {
+      "web": "Sviluppo Web",
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "api": "API"
+    }
+  },
+  "about": {
+    "title": "Chi Sono",
+    "description": "Sono una ragazza appassionata di tecnologia e sviluppo software. Ho iniziato a programmare quando avevo 12 anni e non mi sono più fermata. Credo che il codice sia un potente strumento per cambiare il mondo. :)",
+    "timeline": {
+      "2016": "Inizio del mio viaggio nella programmazione",
+      "2025": "Software Developer con 9 anni di esperienza"
+    }
+  },
+  "contact": {
+    "title": "Contatti",
+    "intro": "Se vuoi metterti in contatto con me, puoi trovarmi qui:"
+  },
+  "footer": {
+    "copyright": "Creato con ❤️ e JavaScript."
+  },
+  "languages": {
+    "it": "Italiano",
+    "en": "English",
+    "ru": "Русский",
+    "pl": "Polski",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "theme": {
+    "toggle": "Cambia tema"
+  }
+}
