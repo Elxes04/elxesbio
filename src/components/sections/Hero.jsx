@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { FaCode } from 'react-icons/fa';
+import '@material/web/fab/fab.js';
+import '@material/web/icon/icon.js';
 import TextTransition from '../common/TextTransition';
 import SkillsGrid from './SkillsGrid';
 
@@ -11,6 +12,7 @@ const HeroSection = styled.section`
   align-items: center;
   justify-content: center;
   padding: 6rem 1rem;
+  background: ${({ theme }) => theme.surface};
 `;
 
 const HeroContent = styled.div`
@@ -22,43 +24,55 @@ const HeroContent = styled.div`
 const Avatar = styled(motion.div)`
   width: 150px;
   height: 150px;
-  border-radius: 50%;
+  border-radius: ${({ theme }) => theme.shape.full};
   background: ${({ theme }) => theme.gradient};
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 2rem;
   font-size: 3rem;
-  color: white;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  color: ${({ theme }) => theme.onPrimary};
+  box-shadow: ${({ theme }) => theme.elevation.level3};
+  
+  md-icon {
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+  }
 `;
 
-const Title = styled(motion.h1)`
+const Title = styled.h1`
   font-size: 3rem;
   margin-bottom: 1rem;
   background: ${({ theme }) => theme.gradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500;
+  letter-spacing: -0.5px;
 
   @media (max-width: 768px) {
     font-size: 2rem;
   }
 `;
 
-const Subtitle = styled(motion.p)`
+const Subtitle = styled.p`
   font-size: 1.5rem;
-  color: ${({ theme }) => theme.textSecondary};
+  color: ${({ theme }) => theme.onSurfaceVariant};
   margin-bottom: 2rem;
+  font-weight: 400;
+  letter-spacing: 0;
 `;
 
-const Description = styled(motion.p)`
+const Description = styled.p`
   font-size: 1.1rem;
   line-height: 1.6;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.onSurface};
   margin-bottom: 3rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  letter-spacing: 0.25px;
 `;
 
 const Hero = () => {
@@ -72,23 +86,23 @@ const Hero = () => {
           animate={{ scale: 1 }}
           transition={{ type: 'spring', stiffness: 100 }}
         >
-          <FaCode />
+          <md-icon>code</md-icon>
         </Avatar>
         
         <TextTransition>
-          <Title>
+          <Title className="md-typescale-display-medium">
             {t('home.greeting')}
           </Title>
         </TextTransition>
         
         <TextTransition>
-          <Subtitle>
+          <Subtitle className="md-typescale-headline-medium">
             {t('home.subtitle')}
           </Subtitle>
         </TextTransition>
         
         <TextTransition>
-          <Description>
+          <Description className="md-typescale-body-large">
             {t('home.description')}
           </Description>
         </TextTransition>

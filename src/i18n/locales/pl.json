@@ -2,7 +2,8 @@
   "nav": {
     "home": "Strona główna",
     "about": "O mnie",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "language": "Język"
   },
   "home": {
     "greeting": "Cześć, jestem Elxes",

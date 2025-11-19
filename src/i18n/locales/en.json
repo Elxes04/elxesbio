@@ -2,7 +2,8 @@
   "nav": {
     "home": "Home",
     "about": "About Me",
-    "contact": "Contact"
+    "contact": "Contact",
+    "language": "Language"
   },
   "home": {
     "greeting": "Hi, I'm Elxes",

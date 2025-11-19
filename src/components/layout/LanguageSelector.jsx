@@ -1,65 +1,79 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { FaGlobe } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import '@material/web/menu/menu.js';
+import '@material/web/menu/menu-item.js';
+import '@material/web/iconbutton/icon-button.js';
+import '@material/web/icon/icon.js';
+import '@material/web/ripple/ripple.js';
 
-const LanguageButton = styled.button`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: none;
-  border: none;
-  color: ${({ theme }) => theme.text};
-  cursor: pointer;
-  padding: 0.5rem;
-  font-size: 1rem;
+const LanguageWrapper = styled(motion.div)`
   position: relative;
-
-  &:hover {
-    color: ${({ theme }) => theme.primary};
-  }
-`;
-
-const Dropdown = styled(motion.div)`
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: ${({ theme }) => theme.cardBg};
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  min-width: 150px;
-  z-index: 1000;
-`;
-
-const LanguageOption = styled.button`
-  width: 100%;
-  padding: 0.75rem 1rem;
-  text-align: left;
-  border: none;
-  background: none;
-  color: ${({ theme }) => theme.text};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
   cursor: pointer;
-  transition: background 0.2s ease;
-
-  &:hover {
-    background: ${({ theme }) => theme.hover};
+  .indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 16px;
+    border-radius: 16px;
+    background: transparent; /* rimuove effetto "premuto" persistente */
+    transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden; /* per clip del ripple */
   }
+  
+  &:hover .indicator {
+    background: ${({ theme }) => theme.surfaceContainer};
+  }
+`;
+
+const MenuContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  
+  md-menu {
+    --md-menu-container-color: ${({ theme }) => theme.surfaceContainer};
+    --md-menu-container-shape: ${({ theme }) => theme.shape.extraSmall};
+  }
+  
+  md-menu-item {
+    --md-menu-item-label-text-color: ${({ theme }) => theme.onSurface};
+    --md-menu-item-container-color: transparent;
+    --md-menu-item-selected-container-color: ${({ theme }) => theme.surfaceContainerHighest};
+  }
+  
+  md-icon-button {
+    --md-icon-button-icon-color: ${({ theme }) => theme.onSurfaceVariant};
+  }
+`;
+
+const Label = styled.span`
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.onSurfaceVariant};
+  transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const LanguageSelector = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  // ref non più necessario dopo rimozione md-icon-button
 
   const languages = [
-    { code: 'it', label: t('languages.it') },
-    { code: 'en', label: t('languages.en') },
-    { code: 'ru', label: t('languages.ru') },
-    { code: 'pl', label: t('languages.pl') },
-    { code: 'es', label: t('languages.es') },
-    { code: 'fr', label: t('languages.fr') },
-    { code: 'de', label: t('languages.de') },
+    { code: 'it', label: 'Italiano', flag: '🇮🇹' },
+    { code: 'en', label: 'English', flag: '🇬🇧' },
+    { code: 'ru', label: 'Русский', flag: '🇷🇺' },
+    { code: 'pl', label: 'Polski', flag: '🇵🇱' },
+    { code: 'es', label: 'Español', flag: '🇪🇸' },
+    { code: 'fr', label: 'Français', flag: '🇫🇷' },
+    { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
   ];
 
   const handleLanguageChange = (langCode) => {
@@ -68,32 +82,34 @@ const LanguageSelector = () => {
   };
 
   return (
-    <div style={{ position: 'relative' }}>
-      <LanguageButton onClick={() => setIsOpen(!isOpen)}>
-        <FaGlobe />
-        <span>{t(`languages.${i18n.language}`)}</span>
-      </LanguageButton>
-      
-      <AnimatePresence>
-        {isOpen && (
-          <Dropdown
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-          >
-            {languages.map((lang) => (
-              <LanguageOption
-                key={lang.code}
-                onClick={() => handleLanguageChange(lang.code)}
-              >
-                {lang.label}
-              </LanguageOption>
-            ))}
-          </Dropdown>
-        )}
-      </AnimatePresence>
-    </div>
+    <LanguageWrapper
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <MenuContainer>
+        <div className="indicator" id="lang-button" onClick={() => setIsOpen(!isOpen)}>
+          <md-ripple></md-ripple>
+          <md-icon>translate</md-icon>
+        </div>
+        <Label>{t('nav.language')}</Label>
+        <md-menu
+          anchor="lang-button"
+          open={isOpen}
+          onClosed={() => setIsOpen(false)}
+          style={{ zIndex: 2002 }}
+        >
+          {languages.map((lang) => (
+            <md-menu-item
+              key={lang.code}
+              onClick={() => handleLanguageChange(lang.code)}
+            >
+              <div slot="headline">{lang.flag} {lang.label}</div>
+            </md-menu-item>
+          ))}
+        </md-menu>
+      </MenuContainer>
+    </LanguageWrapper>
   );
 };
 

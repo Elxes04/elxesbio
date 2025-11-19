@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import TextTransition from '../common/TextTransition';
 
 const AboutSection = styled.section`
@@ -10,6 +8,7 @@ const AboutSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: ${({ theme }) => theme.surfaceContainerLow};
 `;
 
 const Container = styled.div`
@@ -18,112 +17,41 @@ const Container = styled.div`
   text-align: center;
 `;
 
-const Title = styled(motion.h2)`
+const Title = styled.h2`
   font-size: 2.5rem;
   margin-bottom: 2rem;
   background: ${({ theme }) => theme.gradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500;
 `;
 
-const Description = styled(motion.p)`
+const Description = styled.p`
   font-size: 1.1rem;
   line-height: 1.6;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.onSurface};
   margin-bottom: 3rem;
-`;
-
-const Timeline = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 3rem;
-`;
-
-const TimelineItem = styled(motion.div)`
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-`;
-
-const Year = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: ${({ theme }) => theme.primary};
-  min-width: 100px;
-`;
-
-const Content = styled.div`
-  flex: 1;
-  padding: 1.5rem;
-  background: ${({ theme }) => theme.cardBg};
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.25px;
 `;
 
 const About = () => {
   const { t } = useTranslation();
 
-  const timeline = {
-    "2016": t('about.timeline.2016'),
-    "2025": t('about.timeline.2025'),
-  };
-
-  const [titleRef, isTitleInView] = useIntersectionObserver();
-  const [descRef, isDescInView] = useIntersectionObserver();
-
   return (
     <AboutSection id="about">
       <Container>
-        <motion.div
-          ref={titleRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isTitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-        >
-          <TextTransition>
-            <Title>{t('about.title')}</Title>
-          </TextTransition>
-        </motion.div>
+        <TextTransition>
+          <Title className="md-typescale-display-small">
+            {t('about.title')}
+          </Title>
+        </TextTransition>
 
-        <motion.div
-          ref={descRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isDescInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <TextTransition>
-            <Description>{t('about.description')}</Description>
-          </TextTransition>
-        </motion.div>
-
-        <Timeline>
-          {Object.entries(timeline).map(([year, content], index) => {
-            const [itemRef, isItemInView] = useIntersectionObserver();
-            return (
-              <TimelineItem
-                key={year}
-                ref={itemRef}
-                initial={{ opacity: 0, x: -50 }}
-                animate={isItemInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
-                <TextTransition>
-                  <Year>{year}</Year>
-                </TextTransition>
-                <TextTransition>
-                  <Content>{content}</Content>
-                </TextTransition>
-              </TimelineItem>
-            );
-          })}
-        </Timeline>
+        <TextTransition>
+          <Description className="md-typescale-body-large">
+            {t('about.description')}
+          </Description>
+        </TextTransition>
       </Container>
     </AboutSection>
   );

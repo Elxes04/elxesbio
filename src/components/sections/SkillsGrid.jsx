@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
 const Grid = styled.div`
@@ -9,7 +8,7 @@ const Grid = styled.div`
   margin-top: 2rem;
 `;
 
-const Category = styled(motion.div)`
+const Category = styled.div`
   background: ${({ theme }) => theme.cardBg};
   border-radius: 12px;
   padding: 1.5rem;
@@ -28,7 +27,7 @@ const TagsContainer = styled.div`
   gap: 0.5rem;
 `;
 
-const Tag = styled(motion.span)`
+const Tag = styled.span`
   background: ${({ theme }) => theme.tagBg};
   color: ${({ theme }) => theme.tagText};
   padding: 0.5rem 1rem;
@@ -58,45 +57,24 @@ const SkillsGrid = () => {
     { key: 'api', label: t('home.specializationsList.api') }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
   return (
     <Grid>
-      <Category
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
+      <Category>
         <CategoryTitle>{t('home.skills.languages')}</CategoryTitle>
         <TagsContainer>
           {languages.map((lang) => (
-            <Tag key={lang} variants={itemVariants}>
+            <Tag key={lang}>
               {lang}
             </Tag>
           ))}
         </TagsContainer>
       </Category>
 
-      <Category
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
+      <Category>
         <CategoryTitle>{t('home.skills.specializations')}</CategoryTitle>
         <TagsContainer>
           {specializations.map((spec) => (
-            <Tag key={spec.key} variants={itemVariants}>
+            <Tag key={spec.key}>
               {spec.label}
             </Tag>
           ))}

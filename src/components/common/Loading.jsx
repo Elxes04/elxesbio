@@ -1,9 +1,5 @@
-import styled, { keyframes } from 'styled-components';
-
-const loadingAnimation = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-`;
+import styled from 'styled-components';
+import '@material/web/progress/circular-progress.js';
 
 const LoadingContainer = styled.div`
   position: fixed;
@@ -14,22 +10,19 @@ const LoadingContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.body};
+  background: ${({ theme }) => theme.surface};
   z-index: 9999;
-`;
-
-const Spinner = styled.div`
-  width: 50px;
-  height: 50px;
-  border: 4px solid ${({ theme }) => theme.text}20;
-  border-left-color: ${({ theme }) => theme.primary};
-  border-radius: 50%;
-  animation: ${loadingAnimation} 1s linear infinite;
+  
+  md-circular-progress {
+    --md-circular-progress-size: 56px;
+    --md-circular-progress-active-indicator-width: 6px;
+    --md-circular-progress-active-indicator-color: ${({ theme }) => theme.primary};
+  }
 `;
 
 const Loading = () => (
   <LoadingContainer>
-    <Spinner />
+    <md-circular-progress indeterminate></md-circular-progress>
   </LoadingContainer>
 );
 
