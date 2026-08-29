@@ -42,15 +42,23 @@
   }
 
   .frosted-card {
-    background: rgba(15, 23, 42, 0.60);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    background: rgba(15, 23, 42, 0.65);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.10);
     border-radius: 1.5rem;
     box-shadow: 0 8px 30px -6px rgba(0, 0, 0, 0.45),
                 inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: layout style paint;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-    contain: paint;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .frosted-card:hover {
+      transform: translateY(-2px) translateZ(0);
+    }
   }
 
   .accent-chip {
@@ -60,37 +68,38 @@
     padding: 0.4rem 1rem;
     border-radius: 9999px;
     border: 1px solid rgba(255, 255, 255, 0.10);
-    background: rgba(255, 255, 255, 0.05);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.06);
     color: #e2e8f0;
     font-size: 0.875rem;
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
 
-  .accent-chip:hover {
-    background: rgba(168, 85, 247, 0.20);
-    border-color: rgba(168, 85, 247, 0.45);
-    color: #ffffff;
+  @media (hover: hover) and (pointer: fine) {
+    .accent-chip:hover {
+      background: rgba(168, 85, 247, 0.20);
+      border-color: rgba(168, 85, 247, 0.45);
+      color: #ffffff;
+    }
   }
 
   .frosted-pill {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1rem;
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
   }
 
-  .frosted-pill:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(34, 211, 238, 0.40);
+  @media (hover: hover) and (pointer: fine) {
+    .frosted-pill:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(34, 211, 238, 0.40);
+    }
   }
 
   .headline-glow {
     text-shadow: 0 0 28px rgba(167, 139, 250, 0.45);
   }
 }
+
 
 

@@ -14,14 +14,18 @@ const App = () => {
           backgroundImage: `url(${process.env.PUBLIC_URL + '/wallpaper.jpg'})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat'
+          backgroundRepeat: 'no-repeat',
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden'
         }}
       />
       {/* Light protective overlay for optimal contrast and readability */}
       <div
         className="fixed inset-0 pointer-events-none -z-10 bg-slate-950/65"
         style={{
-          background: 'radial-gradient(ellipse at center, rgba(15, 23, 42, 0.45) 0%, rgba(2, 6, 23, 0.85) 100%)'
+          background: 'radial-gradient(ellipse at center, rgba(15, 23, 42, 0.45) 0%, rgba(2, 6, 23, 0.85) 100%)',
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden'
         }}
       />
 
