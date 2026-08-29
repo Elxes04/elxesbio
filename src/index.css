@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    background-color: #020617;
+  }
+
+  html {
+    min-height: 100%;
+    background: radial-gradient(circle at top left, rgba(168, 85, 247, 0.18), transparent 18%),
+      radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.14), transparent 16%),
+      linear-gradient(180deg, #020617 0%, #090b17 40%, #110f24 100%);
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background: transparent;
+    color: #e2e8f0;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .app-shell {
+    min-height: 100vh;
+    padding: 1.5rem;
+    transition: all 0.35s ease;
+    font-family: inherit;
+    background: rgba(10, 14, 26, 0.75);
+    border: 1px solid rgba(148, 163, 184, 0.10);
+    box-shadow: 0 30px 90px -45px rgba(0, 0, 0, 0.45);
+    border-radius: 2rem;
+    backdrop-filter: blur(18px);
+  }
+
+  .frosted-card {
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    backdrop-filter: blur(24px);
+    box-shadow: 0 35px 120px -40px rgba(56, 189, 248, 0.25);
+    border-radius: 2rem;
+  }
+
+  .accent-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    background: rgba(15, 23, 42, 0.75);
+    color: #e2e8f0;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    cursor: crosshair;
+  }
+
+  .accent-chip:hover {
+    background: rgba(168, 85, 247, 0.16);
+    border-color: rgba(236, 72, 153, 0.65);
+  }
+
+  .headline-glow {
+    text-shadow: 0 0 24px rgba(167, 139, 250, 0.45);
+  }
+
+  .pattern-panel {
+    background-image: radial-gradient(circle at top, rgba(167, 139, 250, 0.14), transparent 14%),
+      radial-gradient(circle at bottom, rgba(34, 211, 238, 0.12), transparent 18%);
+  }
+}
+
