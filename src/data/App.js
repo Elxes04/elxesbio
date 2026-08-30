@@ -11,7 +11,7 @@ const App = () => {
       <div
         className="fixed inset-0 pointer-events-none -z-20 bg-cover bg-center"
         style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL + '/wallpaper.jpg'})`,
+          backgroundImage: `url(${process.env.PUBLIC_URL + '/wallpaper.webp'})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
